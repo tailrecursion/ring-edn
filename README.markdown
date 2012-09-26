@@ -16,7 +16,7 @@ In your `:dependencies` section add the following:
 
 ### Ring
 
-*the [examples directory of the ring-edn project](http://github.com/fogus/ring-edn/examples/awe) contains the source for the following*
+*the [examples directory of the ring-edn project](http://github.com/fogus/ring-edn/tree/master/examples/awe) contains the source for the following*
 
 To use this middleware using Ring and [Compojure](https://github.com/weavejester/compojure), create a new Leiningen project with a `project.clj` file of the form:
 
