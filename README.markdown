@@ -51,7 +51,7 @@ Next, create a file in `src` called `my_awesome_service.clj` with the following:
 
 (def app
   (-> handler
-      wrap-clj-params))
+      wrap-edn-params))
 ```
 
 And finally, create another file in `src` named `awesome_app.clj` with the following:

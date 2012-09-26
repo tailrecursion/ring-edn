@@ -1,19 +1,19 @@
 (ns ring.middleware.edn)
 
-(defn- clj-request?
+(defn- edn-request?
   [req]
   (if-let [^String type (:content-type req)]
     (not (empty? (re-find #"^application/(vnd.+)?edn" type)))))
 
-(defn wrap-clj-params
+(defn wrap-edn-params
   [handler]
   (fn [req]
-    (if-let [body (and (clj-request? req) (:body req))]
+    (if-let [body (and (edn-request? req) (:body req))]
       (let [bstr (slurp body)
-            clj-params (binding [*read-eval* false] (read-string bstr))
+            edn-params (binding [*read-eval* false] (read-string bstr))
             req* (assoc req
-                   :clj-params clj-params
-                   :params (merge (:params req) clj-params))]
+                   :edn-params edn-params
+                   :params (merge (:params req) edn-params))]
         (handler req*))
       (handler req))))
 

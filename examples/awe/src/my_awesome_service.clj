@@ -16,4 +16,4 @@
 
 (def app
   (-> handler
-      wrap-clj-params))
+      wrap-edn-params))
