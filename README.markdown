@@ -26,7 +26,7 @@ To use this middleware using Ring and [Compojure](https://github.com/weavejester
   :dependencies [[org.clojure/clojure "1.3.0"]
                  [ring "1.0.2"]
                  [compojure "1.0.1"]
-                 [ring-edn "0.1.0"]]
+                 [fogus/ring-edn "0.1.0"]]
   :main awesome-app)
 ```
 
