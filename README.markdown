@@ -40,7 +40,7 @@ Next, create a file in `src` called `my_awesome_service.clj` with the following:
 (defn generate-response [data & [status]]
   {:status (or status 200)
    :headers {"Content-Type" "application/edn"}
-   :body (print-str data)})
+   :body (pr-str data)})
   
 (defroutes handler
   (GET "/" []
