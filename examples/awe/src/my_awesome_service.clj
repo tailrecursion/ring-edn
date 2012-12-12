@@ -5,7 +5,7 @@
 (defn generate-response [data & [status]]
   {:status (or status 200)
    :headers {"Content-Type" "application/edn"}
-   :body (print-str data)})
+   :body (pr-str data)})
   
 (defroutes handler
   (GET "/" []
