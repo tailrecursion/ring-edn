@@ -2,6 +2,8 @@
 
 A [Ring](https://github.com/mmcgrana/ring) middleware that augments :params by parsing a request body as [Extensible Data Notation](https://github.com/edn-format/edn) (EDN).
 
+*note: Version 0.2.0-SNAPSHOT uses the safer edn/read call. Consider using that version instead.*
+
 ## Where
 
   * [Source repository](https://github.com/fogus/ring-edn) *-- patches welcomed*
@@ -84,7 +86,7 @@ $ curl -X PUT -H "Content-Type: application/edn" \
 
 ## Acknowledgment(s)
 
-Thanks to [Mark McGranaghan](http://markmcgranaghan.com/) for his work on Ring and [ring-json-params](https://github.com/mmcgrana/ring-json-params) on which this project was based.
+Thanks to [Mark McGranaghan](http://markmcgranaghan.com/) for his work on Ring and [ring-json-params](https://github.com/mmcgrana/ring-json-params) on which this project was based.  
 
 ## License
 
