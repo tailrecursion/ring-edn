@@ -1,4 +1,5 @@
-(ns ring.middleware.edn)
+(ns ring.middleware.edn
+  (:require clojure.edn))
 
 (defn- edn-request?
   [req]
@@ -11,16 +12,16 @@
 (extend-type String
   EdnRead
   (-read-edn [s]
-    (read-string s)))
+    (clojure.edn/read-string s)))
 
 (extend-type java.io.InputStream
   EdnRead
   (-read-edn [is]
-    (read (java.io.PushbackReader.
-           (java.io.InputStreamReader.
-             is "UTF-8"))
-          false
-          nil)))
+    (clojure.edn/read
+     {:eof nil}
+     (java.io.PushbackReader.
+                       (java.io.InputStreamReader.
+                        is "UTF-8")))))
 
 (defn wrap-edn-params
   [handler]
@@ -32,4 +33,3 @@
                    :params (merge (:params req) edn-params))]
         (handler req*))
       (handler req))))
-
