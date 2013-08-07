@@ -90,6 +90,6 @@ Thanks to [Mark McGranaghan](http://markmcgranaghan.com/) for his work on Ring a
 
 ## License
 
-Copyright (C) 2012 Fogus
+Copyright (C) 2012,2013 Fogus
 
 Distributed under the Eclipse Public License, the same as Clojure.
