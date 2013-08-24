@@ -2,8 +2,6 @@
 
 A [Ring](https://github.com/mmcgrana/ring) middleware that augments :params by parsing a request body as [Extensible Data Notation](https://github.com/edn-format/edn) (EDN).
 
-*note: Version 0.2.0-SNAPSHOT uses the safer edn/read call. Consider using that version instead.*
-
 ## Where
 
   * [Source repository](https://github.com/fogus/ring-edn) *-- patches welcomed*
@@ -14,7 +12,7 @@ A [Ring](https://github.com/mmcgrana/ring) middleware that augments :params by p
 
 In your `:dependencies` section add the following:
 
-    [ring-edn "0.1.0"]
+    [ring-edn "0.2.0"]
 
 ### Ring
 
@@ -25,10 +23,10 @@ To use this middleware using Ring and [Compojure](https://github.com/weavejester
 ```clojure
 (defproject awesomeness "0.0.1"
   :description "true power awesomeness"
-  :dependencies [[org.clojure/clojure "1.3.0"]
+  :dependencies [[org.clojure/clojure "1.5.1"]
                  [ring "1.0.2"]
                  [compojure "1.0.1"]
-                 [fogus/ring-edn "0.1.0"]]
+                 [fogus/ring-edn "0.2.0"]]
   :main awesome-app)
 ```
 
