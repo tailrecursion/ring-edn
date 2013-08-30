@@ -12,7 +12,7 @@ A [Ring](https://github.com/mmcgrana/ring) middleware that augments :params by p
 
 In your `:dependencies` section add the following:
 
-    [ring-edn "0.2.0"]
+    [fogus/ring-edn "0.2.0"]
 
 ### Ring
 
