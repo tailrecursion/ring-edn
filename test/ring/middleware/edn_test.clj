@@ -1,7 +1,10 @@
 (ns ring.middleware.edn-test
   (:use [ring.middleware.edn])
   (:use [clojure.test])
-  (:import java.io.ByteArrayInputStream))
+  (:import java.io.ByteArrayInputStream)
+  (:require [clojure.edn :as edn]))
+
+(def content-type "application/edn; charset=UTF-8")
 
 (defn stream [s]
   (ByteArrayInputStream. (.getBytes s "UTF-8")))
@@ -19,7 +22,7 @@
     (is (nil? (:edn-params resp)))))
 
 (deftest augments-with-edn-content-type
-  (let [req {:content-type "application/edn; charset=UTF-8"
+  (let [req {:content-type content-type 
              :body (stream "{:foo :bar}")
              :params {"id" 3}}
         resp (build-edn-params req)]
@@ -27,7 +30,7 @@
     (is (= {:foo :bar} (:edn-params resp)))))
 
 (deftest augments-with-edn-content-type-no-eval
-  (let [req {:content-type "application/edn; charset=UTF-8"
+  (let [req {:content-type content-type 
              :body (stream "{:expr (+ 1 2)}")
              :params {"id" 3}}
         resp (build-edn-params req)]
@@ -35,7 +38,7 @@
     (is (= '{:expr (+ 1 2)} (:edn-params resp)))))
 
 (deftest augments-with-edn-content-type-no-read-eval
-  (let [req {:content-type "application/edn; charset=UTF-8"
+  (let [req {:content-type content-type 
              :body (stream "{:expr #=(+ 1 2)}")}]
     (is (thrown? RuntimeException (build-edn-params req)))))
 
@@ -46,3 +49,17 @@
         resp (build-edn-params req)]
     (is (= {"id" 3 :foo :bar} (:params resp)))
     (is (= {:foo :bar} (:edn-params resp)))))
+
+;; Custom Tags
+
+(defrecord User [name])
+
+(def build-custom-edn-params
+  (wrap-edn-params identity {:readers {'ring-edn/user map->User}}))
+
+(deftest arguments-with-custom-tags
+  (let [req {:content-type content-type 
+             :body (stream "{:user #ring-edn/user {:name \"Jane Doe\"}}") 
+             :params {"id" 3}}]
+    (let [res (build-custom-edn-params req)]
+      (is (= {:user (User. "Jane Doe")} (:edn-params res))))))
