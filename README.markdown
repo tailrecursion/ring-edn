@@ -82,6 +82,8 @@ $ curl -X PUT -H "Content-Type: application/edn" \
 #=> {:hello :barnabas}%  
 ```
 
+You can also run the test suite with `lein test`.
+
 ## Acknowledgment(s)
 
 Thanks to [Mark McGranaghan](http://markmcgranaghan.com/) for his work on Ring and [ring-json-params](https://github.com/mmcgrana/ring-json-params) on which this project was based.  
