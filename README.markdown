@@ -12,7 +12,7 @@ A [Ring](https://github.com/mmcgrana/ring) middleware that augments :params by p
 
 In your `:dependencies` section add the following:
 
-    [fogus/ring-edn "0.2.0"]
+    [fogus/ring-edn "0.3.0"]
 
 ### Ring
 
@@ -23,10 +23,10 @@ To use this middleware using Ring and [Compojure](https://github.com/weavejester
 ```clojure
 (defproject awesomeness "0.0.1"
   :description "true power awesomeness"
-  :dependencies [[org.clojure/clojure "1.5.1"]
+  :dependencies [[org.clojure/clojure "1.6.0"]
                  [ring "1.0.2"]
                  [compojure "1.0.1"]
-                 [fogus/ring-edn "0.2.0"]]
+                 [fogus/ring-edn "0.3.0"]]
   :main awesome-app)
 ```
 
@@ -129,7 +129,7 @@ You can also run the test suite with `lein test`.
 
 ## Acknowledgment(s)
 
-Thanks to [Mark McGranaghan](http://markmcgranaghan.com/) for his work on Ring and [ring-json-params](https://github.com/mmcgrana/ring-json-params) on which this project was based.
+Thanks to [Mark McGranaghan](http://markmcgranaghan.com/) for his work on Ring and [ring-json-params](https://github.com/mmcgrana/ring-json-params) on which this project was based.  An additional thanks to Sebastian Bensusan for his high-quality patches.
 
 ## License
 
