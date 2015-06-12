@@ -3,7 +3,7 @@
 
 (defn- edn-request?
   [req]
-  (if-let [^String type (:content-type req)]
+  (if-let [^String type (get-in req [:headers "content-type"] "")]
     (not (empty? (re-find #"^application/(vnd.+)?edn" type)))))
 
 (defprotocol EdnRead
