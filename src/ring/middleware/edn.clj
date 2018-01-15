@@ -45,3 +45,13 @@
                     :params (merge (:params req) edn-params))]
          (handler req*))
        (handler req)))))
+
+(defn wrap-edn-body
+  "If the request has the edn content-type, reads the body and assocs it into the
+  request under :body."
+  ([handler] (wrap-edn-body handler {}))
+  ([handler opts]
+   (fn [req]
+     (if-let [body (and (edn-request? req) (:body req))]
+       (handler (assoc req :body (binding [*read-eval* false] (-read-edn body opts))))
+       (handler req)))))
